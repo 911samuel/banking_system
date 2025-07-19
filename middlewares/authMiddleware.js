@@ -17,7 +17,7 @@ const authenticateAgent = async (req, res, next) => {
     if (!agent) {
       return res.status(401).json({ message: 'Agent not found' });
     }
-    req.agent = { id: agent.id, agentCode: agent.agentCode };
+    req.agent = { id: agent.id, agentCode: agent.agentCode, role: agent.role || 'agent' };
     next();
   } catch (error) {
     console.error('Agent authentication error:', error);
@@ -48,7 +48,15 @@ const authenticateEmployee = async (req, res, next) => {
   }
 };
 
+const authenticateAdmin = (req, res, next) => {
+  if (!req.agent || req.agent.role !== 'admin') {
+    return res.status(403).json({ message: 'Admin access required' });
+  }
+  next();
+};
+
 module.exports = {
   authenticateAgent,
   authenticateEmployee,
+  authenticateAdmin,
 };

@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to database
-const { connectDB } = require('./config/database');
+const { connectDB } = require('./config/database').default;
 connectDB();
 
 app.use('/', indexRouter);
@@ -29,6 +29,12 @@ app.use('/users', usersRouter);
 app.use('/agents', agentsRouter);
 var employeesRouter = require('./routes/employees');
 app.use('/employees', employeesRouter);
+var accountsRouter = require('./routes/accounts');
+app.use('/accounts', accountsRouter);
+var uploadsRouter = require('./routes/uploads');
+app.use('/uploads', uploadsRouter);
+var payrollRouter = require('./routes/payroll');
+app.use('/payroll', payrollRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
