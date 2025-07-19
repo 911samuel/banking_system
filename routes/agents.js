@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const agentsController = require('../controllers/agentsController');
-const { authenticateAgent } = require('../middlewares/authMiddleware');
+import { Router } from 'express';
+import { login, getAgentInfo } from '../controllers/agentsController';
+import { authenticateAgent } from '../middlewares/authMiddleware';
 
+const router = Router();
 // Agent login
-router.post('/login', agentsController.login);
+router.post('/login', login);
 
 // Get agent info (protected)
-router.get('/info', authenticateAgent, agentsController.getAgentInfo);
+router.get('/info', authenticateAgent, getAgentInfo);
 
-module.exports = router;
+export default router;

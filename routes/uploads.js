@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import upload from '../middlewares/uploadMiddleware.js';
+import uploadsController from '../controllers/uploadsController.js';
+import { authenticateAgent, authenticateEmployee } from '../middlewares/authMiddleware.js';
+
 const router = express.Router();
-const upload = require('../middlewares/uploadMiddleware');
-const uploadsController = require('../controllers/uploadsController');
-const { authenticateAgent, authenticateEmployee } = require('../middlewares/authMiddleware');
 
 // Upload identity documents by agent (protected)
 router.post('/agent', authenticateAgent, upload.fields([

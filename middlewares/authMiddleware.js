@@ -1,6 +1,6 @@
-const { verifyToken } = require('../utils/jwt');
-const Agent = require('../models/Agent');
-const Employee = require('../models/Employee');
+import { verifyToken } from '../utils/jwt';
+import Agent from '../models/Agent';
+import Employee from '../models/Employee';
 
 const authenticateAgent = async (req, res, next) => {
   const authHeader = req.headers.authorization;

@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const Employee = require('../models/Employee');
-const { generateToken } = require('../utils/jwt');
+import bcrypt from 'bcrypt';
+import Agent from '../models/Agent.js';
+import { generateToken } from '../utils/jwt.js';
 
 const login = async (req, res) => {
   const { employmentAccountNumber, password } = req.body;

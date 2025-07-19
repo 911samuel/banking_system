@@ -1,8 +1,8 @@
-const Payroll = require('../models/Payroll');
-const Employee = require('../models/Employee');
-const Agent = require('../models/Agent');
-const SalaryPayment = require('../models/SalaryPayment');
-const { v4: uuidv4 } = require('uuid');
+import Payroll from '../models/Payroll.js';
+import Employee from '../models/Employee.js';
+import Agent from '../models/Agent.js';
+import SalaryPayment from '../models/SalaryPayment.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const getPayrollInfoByRNRS = async (req, res) => {
   const { rnrsRegistrationId } = req.body;

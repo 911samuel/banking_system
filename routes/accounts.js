@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const accountsController = require('../controllers/accountsController');
-const { authenticateAgent, authenticateEmployee } = require('../middlewares/authMiddleware');
+import express from 'express';
+import router from 'express.router';
+import accountsController from '../controllers/accountsController';
+import { authenticateAgent, authenticateEmployee } from '../middlewares/authMiddleware';
 
 // Create account by agent (protected)
 router.post('/agent/create', authenticateAgent, accountsController.createAccountByAgent);

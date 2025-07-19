@@ -1,12 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const employeesController = require('../controllers/employeesController');
-const { authenticateEmployee } = require('../middlewares/authMiddleware');
+import { Router } from 'express';
+import { login, getEmployeeInfo } from '../controllers/employeesController';
+import { authenticateEmployee } from '../middlewares/authMiddleware';
+
+const router = Router();
 
 // Employee login
-router.post('/login', employeesController.login);
+router.post('/login', login);
 
 // Get employee info (protected)
-router.get('/info', authenticateEmployee, employeesController.getEmployeeInfo);
+router.get('/info', authenticateEmployee, getEmployeeInfo);
 
-module.exports = router;
+export default router;
