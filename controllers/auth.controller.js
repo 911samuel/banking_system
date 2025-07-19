@@ -13,7 +13,7 @@ const register = async (req, res) => {
       return res.status(409).json({ message: 'Username already exists' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await User.create({ username, password: hashedPassword, role });
+    const newUser = await User.create({ username, passwordHash: hashedPassword, role });
     res.status(201).json({ message: 'User registered successfully', userId: newUser.id });
   } catch (error) {
     console.error('Register error:', error);
@@ -31,7 +31,7 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: 'Invalid username or password' });
     }
-    const validPassword = await bcrypt.compare(password, user.password);
+    const validPassword = await bcrypt.compare(password, user.passwordHash);
     if (!validPassword) {
       return res.status(401).json({ message: 'Invalid username or password' });
     }

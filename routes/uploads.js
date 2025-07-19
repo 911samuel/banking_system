@@ -1,7 +1,7 @@
 import express from 'express';
-import upload from '../middlewares/uploadMiddleware.js';
+import upload from '../middleware/uploadMiddleware.js';
 import uploadsController from '../controllers/uploadsController.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const { authenticateAgent, authenticateEmployee } = authMiddleware;
 

@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import orgController from '../controllers/org.controller.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
-import roleMiddleware from '../middlewares/role.middleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import roleMiddleware from '../middleware/role.middleware.js';
 
 const router = Router();
 
-router.post('/register', authMiddleware.authenticateUser, roleMiddleware.isOrgAdmin, orgController.registerOrg);
-router.get('/', authMiddleware.authenticateUser, roleMiddleware.isSystemAdmin, orgController.getAllOrgs);
-router.get('/:id', authMiddleware.authenticateUser, orgController.getOrgById);
-router.patch('/:id/status', authMiddleware.authenticateUser, roleMiddleware.isSystemAdmin, orgController.updateOrgStatus);
-router.get('/:id/employees', authMiddleware.authenticateUser, orgController.getOrgEmployees);
+router.post('/register', authMiddleware.authenticateAgent, roleMiddleware.isOrgAdmin, orgController.registerOrg);
+router.get('/', authMiddleware.authenticateAgent, roleMiddleware.isSystemAdmin, orgController.getAllOrgs);
+router.get('/:id', authMiddleware.authenticateAgent, orgController.getOrgById);
+router.patch('/:id/status', authMiddleware.authenticateAgent, roleMiddleware.isSystemAdmin, orgController.updateOrgStatus);
+router.get('/:id/employees', authMiddleware.authenticateAgent, orgController.getOrgEmployees);
 
 export default router;

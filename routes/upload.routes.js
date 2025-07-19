@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import uploadController from '../controllers/upload.controller.js';
-import uploadMiddleware from '../middlewares/uploadMiddleware.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
+import uploadMiddleware from '../middleware/uploadMiddleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = Router();
 
-router.post('/certificate', authMiddleware.authenticateUser, uploadMiddleware.single('file'), uploadController.uploadCertificate);
+router.post('/certificate', authMiddleware.authenticateAgent, uploadMiddleware.single('file'), uploadController.uploadCertificate);
 
 export default router;

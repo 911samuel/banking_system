@@ -1,16 +1,16 @@
 import Org from '../models/Org.js';
 
 const registerOrg = async (req, res) => {
-  const { name, address, contactEmail } = req.body;
-  if (!name || !address || !contactEmail) {
-    return res.status(400).json({ message: 'Name, address, and contact email are required' });
+  const { orgName, address, contactEmail } = req.body;
+  if (!orgName || !address || !contactEmail) {
+    return res.status(400).json({ message: 'Organization name, address, and contact email are required' });
   }
   try {
-    const existingOrg = await Org.findOne({ where: { name } });
+    const existingOrg = await Org.findOne({ where: { orgName } });
     if (existingOrg) {
       return res.status(409).json({ message: 'Organization already exists' });
     }
-    const newOrg = await Org.create({ name, address, contactEmail, status: 'pending' });
+    const newOrg = await Org.create({ orgName, address, contactEmail, status: 'pending' });
     res.status(201).json({ message: 'Organization registered successfully', orgId: newOrg.id });
   } catch (error) {
     console.error('Register organization error:', error);

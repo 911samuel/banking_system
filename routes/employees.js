@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import employeesController from '../controllers/employeesController.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const { login, getEmployeeInfo } = employeesController;
 const { authenticateEmployee } = authMiddleware;
