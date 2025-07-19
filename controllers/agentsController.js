@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import Agent from '../models/Agent.js';
 import { generateToken } from '../utils/jwt.js';
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   const { agentCode, password } = req.body;
 
   if (!agentCode || !password) {
@@ -28,7 +28,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const getAgentInfo = async (req, res) => {
+const getAgentInfo = async (req, res) => {
   try {
     const agent = await Agent.findByPk(req.agent.id, {
       attributes: ['agentName', 'assignedBranch', 'performanceMetrics', 'recentActivities'],
@@ -43,4 +43,9 @@ export const getAgentInfo = async (req, res) => {
     console.error('Get agent info error:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
+};
+
+export default {
+  login,
+  getAgentInfo,
 };

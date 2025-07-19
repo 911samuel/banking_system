@@ -1,7 +1,9 @@
 import express from 'express';
-import router from 'express.router';
-import accountsController from '../controllers/accountsController';
-import { authenticateAgent, authenticateEmployee } from '../middlewares/authMiddleware';
+const router = express.Router();
+import accountsController from '../controllers/accountsController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+
+const { authenticateAgent, authenticateEmployee } = authMiddleware;
 
 // Create account by agent (protected)
 router.post('/agent/create', authenticateAgent, accountsController.createAccountByAgent);
@@ -12,4 +14,4 @@ router.post('/employee/create', authenticateEmployee, accountsController.createA
 // Get account details (protected, can be extended)
 router.get('/:accountNumber', accountsController.getAccountDetails);
 
-module.exports = router;
+export default router;

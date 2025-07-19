@@ -210,7 +210,7 @@ const automateSalaryPayments = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   getPayrollInfoByRNRS,
   generateSalaryCode,
   confirmSalaryCode,

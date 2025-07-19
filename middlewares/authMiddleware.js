@@ -1,6 +1,6 @@
-import { verifyToken } from '../utils/jwt';
-import Agent from '../models/Agent';
-import Employee from '../models/Employee';
+import { verifyToken } from '../utils/jwt.js';
+import Agent from '../models/Agent.js';
+import Employee from '../models/Employee.js';
 
 const authenticateAgent = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -55,7 +55,7 @@ const authenticateAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = {
+export default {
   authenticateAgent,
   authenticateEmployee,
   authenticateAdmin,

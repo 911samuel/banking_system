@@ -1,5 +1,6 @@
-import DataTypes from 'sequelize';
-import sequelize from '../config/database';
+import { DataTypes } from 'sequelize';
+import db from '../config/database.js';
+const { sequelize } = db;
 
 const Payroll = sequelize.define('Payroll', {
   id: {
@@ -18,7 +19,7 @@ const Payroll = sequelize.define('Payroll', {
   },
   agentId: {
     type: DataTypes.UUID,
-    allowNull: false,
+    allowNull: true,
   },
   salaryStatus: {
     type: DataTypes.STRING,
@@ -46,4 +47,4 @@ const Payroll = sequelize.define('Payroll', {
   timestamps: true,
 });
 
-module.exports = Payroll;
+export default Payroll;

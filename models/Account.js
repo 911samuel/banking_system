@@ -1,5 +1,6 @@
-import DataTypes from 'sequelize';
-import sequelize from '../config/database';
+import { DataTypes } from 'sequelize';
+import db from '../config/database.js';
+const { sequelize } = db;
 
 const Account = sequelize.define('Account', {
   id: {
@@ -16,46 +17,18 @@ const Account = sequelize.define('Account', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  accountHolderName: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  dateOfBirth: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
-  },
-  socialSecurityNumber: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  homeAddress: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  emailAddress: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  phoneNumber: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  createdByAgentId: {
+  ownerId: {
     type: DataTypes.UUID,
-    allowNull: true,
-  },
-  createdByEmployeeId: {
-    type: DataTypes.UUID,
-    allowNull: true,
-  },
-  status: {
-    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'pending',
+  },
+  balance: {
+    type: DataTypes.DECIMAL(15, 2),
+    allowNull: false,
+    defaultValue: 0,
   },
 }, {
   tableName: 'accounts',
   timestamps: true,
 });
 
-module.exports = Account;
+export default Account;

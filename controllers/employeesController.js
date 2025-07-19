@@ -39,7 +39,7 @@ const getEmployeeInfo = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   login,
-  getEmployeeInfo,
+  getEmployeeInfo
 };

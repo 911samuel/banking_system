@@ -1,5 +1,6 @@
-import DataTypes from 'sequelize';
-import sequelize from '../config/database';
+import { DataTypes } from 'sequelize';
+import db from '../config/database.js';
+const { sequelize } = db;
 
 const Agent = sequelize.define('Agent', {
   id: {
@@ -37,4 +38,4 @@ const Agent = sequelize.define('Agent', {
   timestamps: true,
 });
 
-module.exports = Agent;
+export default Agent;

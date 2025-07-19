@@ -1,9 +1,12 @@
 import express from 'express';
 import upload from '../middlewares/uploadMiddleware.js';
 import uploadsController from '../controllers/uploadsController.js';
-import { authenticateAgent, authenticateEmployee } from '../middlewares/authMiddleware.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+
+const { authenticateAgent, authenticateEmployee } = authMiddleware;
 
 const router = express.Router();
+
 
 // Upload identity documents by agent (protected)
 router.post('/agent', authenticateAgent, upload.fields([
@@ -21,4 +24,4 @@ router.post('/employee', authenticateEmployee, upload.fields([
   { name: 'employeeId', maxCount: 1 },
 ]), uploadsController.uploadByEmployee);
 
-module.exports = router;
+export default router;

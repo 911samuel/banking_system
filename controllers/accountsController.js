@@ -1,4 +1,4 @@
-import { findOne, create } from '../models/Account';
+import Account from '../models/Account.js';
 
 const createAccountByAgent = async (req, res) => {
   const {
@@ -17,12 +17,12 @@ const createAccountByAgent = async (req, res) => {
   }
 
   try {
-    const existingAccount = await findOne({ where: { accountNumber } });
+    const existingAccount = await Account.findOne({ where: { accountNumber } });
     if (existingAccount) {
       return res.status(409).json({ message: 'Account number already exists' });
     }
 
-    const newAccount = await create({
+    const newAccount = await Account.create({
       accountNumber,
       accountType,
       accountHolderName,
@@ -59,12 +59,12 @@ const createAccountByEmployee = async (req, res) => {
   }
 
   try {
-    const existingAccount = await findOne({ where: { accountNumber } });
+    const existingAccount = await Account.findOne({ where: { accountNumber } });
     if (existingAccount) {
       return res.status(409).json({ message: 'Account number already exists' });
     }
 
-    const newAccount = await create({
+    const newAccount = await Account.create({
       accountNumber,
       accountType,
       accountHolderName,
@@ -87,7 +87,7 @@ const createAccountByEmployee = async (req, res) => {
 const getAccountDetails = async (req, res) => {
   const { accountNumber } = req.params;
   try {
-    const account = await findOne({ where: { accountNumber } });
+    const account = await Account.findOne({ where: { accountNumber } });
     if (!account) {
       return res.status(404).json({ message: 'Account not found' });
     }

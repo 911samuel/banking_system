@@ -1,9 +1,11 @@
 import { Router } from 'express';
-import { login, getEmployeeInfo } from '../controllers/employeesController';
-import { authenticateEmployee } from '../middlewares/authMiddleware';
+import employeesController from '../controllers/employeesController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+
+const { login, getEmployeeInfo } = employeesController;
+const { authenticateEmployee } = authMiddleware;
 
 const router = Router();
-
 // Employee login
 router.post('/login', login);
 

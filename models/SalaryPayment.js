@@ -1,5 +1,6 @@
 import DataTypes from 'sequelize';
-import sequelize from '../config/database';
+import db from '../config/database.js';
+const { sequelize } = db;
 
 const SalaryPayment = sequelize.define('SalaryPayment', {
   id: {
@@ -54,4 +55,4 @@ const SalaryPayment = sequelize.define('SalaryPayment', {
   timestamps: true,
 });
 
-module.exports = SalaryPayment;
+export default SalaryPayment;

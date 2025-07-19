@@ -12,7 +12,8 @@ import accountsRouter from './routes/accounts.js';
 import uploadsRouter from './routes/uploads.js';
 import payrollRouter from './routes/payroll.js';
 
-import { connectDB } from './config/database.js';
+import database from './config/database.js';
+const { connectDB } = database;
 
 const app = express();
 

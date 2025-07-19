@@ -1,5 +1,6 @@
-import DataTypes from 'sequelize';
-import sequelize from '../config/database';
+import { DataTypes } from 'sequelize';
+import db from '../config/database.js';
+const { sequelize } = db;
 
 const Employee = sequelize.define('Employee', {
   id: {
@@ -28,10 +29,6 @@ const Employee = sequelize.define('Employee', {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  recentTransactions: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -41,4 +38,4 @@ const Employee = sequelize.define('Employee', {
   timestamps: true,
 });
 
-module.exports = Employee;
+export default Employee;

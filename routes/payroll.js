@@ -1,6 +1,9 @@
 import { Router } from 'express';
-import { getPayrollInfoByRNRS, generateSalaryCode, confirmSalaryCode, processPayment, getPaymentReceipt, automateSalaryPayments } from '../controllers/payrollController';
-import { authenticateAgent, authenticateAdmin } from '../middlewares/authMiddleware';
+import payrollController from '../controllers/payrollController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+
+const { getPayrollInfoByRNRS, generateSalaryCode, confirmSalaryCode, processPayment, getPaymentReceipt, automateSalaryPayments } = payrollController;
+const { authenticateAgent, authenticateAdmin } = authMiddleware;
 
 const router = Router();
 
