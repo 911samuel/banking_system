@@ -11,6 +11,14 @@ import employeesRouter from './routes/employees.js';
 import accountsRouter from './routes/accounts.js';
 import uploadsRouter from './routes/uploads.js';
 import payrollRouter from './routes/payroll.js';
+import authRouter from './routes/auth.routes.js';
+import orgRouter from './routes/org.routes.js';
+import categoryRouter from './routes/category.routes.js';
+import employeeRouter from './routes/employee.routes.js';
+import attendanceRouter from './routes/attendance.routes.js';
+import loanRouter from './routes/loan.routes.js';
+import jobseekerRouter from './routes/jobseeker.routes.js';
+import uploadRouter from './routes/upload.routes.js';
 
 import database from './config/database.js';
 const { connectDB } = database;
@@ -37,6 +45,14 @@ app.use('/employees', employeesRouter);
 app.use('/accounts', accountsRouter);
 app.use('/uploads', uploadsRouter);
 app.use('/payroll', payrollRouter);
+app.use('/auth', authRouter);
+app.use('/orgs', orgRouter);
+app.use('/categories', categoryRouter);
+app.use('/employees', employeeRouter);
+app.use('/attendance', attendanceRouter);
+app.use('/loans', loanRouter);
+app.use('/jobseekers', jobseekerRouter);
+app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
